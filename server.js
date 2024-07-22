@@ -38,7 +38,7 @@ const formSchema = new mongoose.Schema({
 const FormData = mongoose.model('FormData', formSchema);
 
 // Route to handle form submission
-app.post('/submit', (req, res) => {
+app.post('/api/submit', (req, res) => {
     const { fullName, email, phoneNumber, treatmentRequirement } = req.body;
 
     const newFormData = new FormData({ fullName, email, phoneNumber, treatmentRequirement });
