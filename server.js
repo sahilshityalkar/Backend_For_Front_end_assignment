@@ -12,9 +12,12 @@ const port = process.env.PORT || 3000;
 
 // Middleware
 app.use(bodyParser.json());
-app.use(cors({
-    origin: 'https://sahilshityalkarhermanosassignment.netlify.app' // Replace with your frontend URL
-}));
+app.use(
+    cors({
+     origin: ["http://localhost:3000", "https://sahilshityalkarhermanosassignment.netlify.app"],
+     credentials: true,
+   })
+ );
 
 // Connect to MongoDB Atlas
 mongoose.connect(process.env.DATABASE_URL, {
