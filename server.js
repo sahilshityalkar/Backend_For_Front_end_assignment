@@ -12,7 +12,9 @@ const port = process.env.PORT || 3000;
 
 // Middleware
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({
+    origin: 'https://sahilshityalkarhermanosassignment.netlify.app' // Replace with your frontend URL
+}));
 
 // Connect to MongoDB Atlas
 mongoose.connect(process.env.DATABASE_URL, {
@@ -53,5 +55,9 @@ app.post('/api/submit', (req, res) => {
 
 // Start the server
 app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
+    if (process.env.NODE_ENV === 'production') {
+        console.log(`Server running at ${process.env.VERCEL_URL}`);
+    } else {
+        console.log(`Server running at http://localhost:${port}`);
+    }
 });
