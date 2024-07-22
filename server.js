@@ -55,9 +55,5 @@ app.post('/api/submit', (req, res) => {
 
 // Start the server
 app.listen(port, () => {
-    if (process.env.NODE_ENV === 'production') {
-        console.log(`Server running at ${process.env.VERCEL_URL}`);
-    } else {
-        console.log(`Server running at http://localhost:${port}`);
-    }
+    console.log(`Server running at http://localhost:${port}`);
 });
